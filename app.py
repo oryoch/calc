@@ -43,13 +43,20 @@ def index():
 
             man = round(total / 10000, 1)
 
+            # 保存
             with open("data.txt", "a", encoding="utf-8") as f:
                 f.write(f"{datetime.datetime.now()} | 合計:{total}円 | 手取り:{man}万円\n")
 
         except Exception as e:
             return f"エラー: {e}"
 
-    return render_template("index.html", total=total, man=man)
+    # 👇ここ追加（読み込み）
+    history = []
+    if os.path.exists("data.txt"):
+        with open("data.txt", "r", encoding="utf-8") as f:
+            history = f.readlines()
+
+    return render_template("index.html", total=total, man=man, history=history)
 
 
 if __name__ == "__main__":
