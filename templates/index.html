@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body>
+<form method="POST">
+  家賃: <input name="yachin"><br>
+  敷金: <input name="shikikin"><br>
+  礼金: <input name="reikin"><br>
+  保証料(%): <input name="hoshou"><br>
+  前家賃: <input name="mae"><br>
+
+  仲介:
+  <select name="chukai">
+    <option value="1">100%</option>
+    <option value="2">80%</option>
+    <option value="3">50%</option>
+    <option value="4">22000円</option>
+  </select><br>
+
+  鍵: <input name="kagi"><br>
+  消毒: <input name="shoudoku"><br>
+  クリーニング: <input name="cleaning"><br>
+  保険: <input name="hoken"><br>
+
+  <button type="submit">計算</button>
+</form>
+
+{% if total %}
+<p>合計: {{ total }}円</p>
+<p>手取り: {{ man }}万円</p>
+{% endif %}
+</body>
+</html>
