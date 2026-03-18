@@ -119,6 +119,17 @@
     </div>
     {% endif %}
 
+    {% if history %}
+    <div style="margin-top:20px;">
+      <h3>履歴</h3>
+      {% for item in history %}
+        <div style="background:#fff; padding:8px; margin-bottom:5px; border-radius:5px;">
+         {{ item }}
+        </div>
+      {% endfor %}
+     </div>
+    {% endif %}
+
   </div>
 </body>
 </html>
