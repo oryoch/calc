@@ -6,78 +6,119 @@
   <style>
     body {
       font-family: Arial;
-      background: #f5f5f5;
+      background: linear-gradient(to right, #667eea, #764ba2);
       margin: 0;
       padding: 20px;
     }
+
     .box {
-      max-width: 400px;
+      max-width: 420px;
       margin: auto;
       background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     }
+
     h2 {
       text-align: center;
+      margin-bottom: 20px;
     }
-    input, select, button {
+
+    label {
+      font-size: 13px;
+      color: #555;
+    }
+
+    input, select {
       width: 100%;
       padding: 10px;
       margin: 5px 0 15px;
-      border-radius: 5px;
+      border-radius: 8px;
       border: 1px solid #ccc;
     }
+
     button {
-      background: #007bff;
-      color: #fff;
+      width: 100%;
+      padding: 12px;
       border: none;
+      border-radius: 8px;
+      background: #667eea;
+      color: #fff;
+      font-size: 16px;
     }
+
     button:hover {
-      background: #0056b3;
+      background: #5a67d8;
     }
+
     .result {
-      background: #e9f5ff;
-      padding: 10px;
-      border-radius: 5px;
-      margin-top: 15px;
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 10px;
+      background: #f0f4ff;
+      text-align: center;
+    }
+
+    .result strong {
+      font-size: 18px;
     }
   </style>
 </head>
 
 <body>
   <div class="box">
-    <h2>初期費用計算</h2>
+    <h2>初期費用シミュレーター</h2>
 
     <form method="POST">
-      家賃<input name="yachin">
-      敷金<input name="shikikin">
-      礼金<input name="reikin">
-      保証料(%)<input name="hoshou">
-      前家賃<input name="mae">
 
-      仲介
+      <label>家賃</label>
+      <input name="yachin">
+
+      <label>敷金（月数）</label>
+      <input name="shikikin">
+
+      <label>礼金（月数）</label>
+      <input name="reikin">
+
+      <label>保証料（%）</label>
+      <input name="hoshou">
+
+      <label>前家賃（月数）</label>
+      <input name="mae">
+
+      <label>仲介手数料</label>
       <select name="chukai">
         <option value="1">100%</option>
         <option value="2">80%</option>
         <option value="3">50%</option>
-        <option value="4">22000円</option>
+        <option value="4">22,000円</option>
       </select>
 
-      鍵<input name="kagi">
-      消毒<input name="shoudoku">
-      クリーニング<input name="cleaning">
-      保険<input name="hoken">
+      <label>鍵交換代</label>
+      <input name="kagi">
+
+      <label>消毒費用</label>
+      <input name="shoudoku">
+
+      <label>クリーニング代</label>
+      <input name="cleaning">
+
+      <label>火災保険</label>
+      <input name="hoken">
 
       <button type="submit">計算する</button>
     </form>
 
     {% if total %}
     <div class="result">
-      <p>合計：{{ total }}円</p>
-      <p>手取り：{{ man }}万円</p>
+      <p>合計</p>
+      <strong>{{ total }}円</strong>
+      <p>手取り</p>
+      <strong>{{ man }}万円</strong>
     </div>
     {% endif %}
+
   </div>
 </body>
 </html>
